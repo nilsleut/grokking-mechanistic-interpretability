@@ -1,0 +1,24 @@
+Fourier-Feature-Analyse — Summary
+==================================================
+p (Modulus)        : 97
+Key Frequencies    : [np.int64(36), np.int64(7), np.int64(3), np.int64(44), np.int64(45)]
+
+W_E Embedding-Spektrum
+  Gini-Koeff.      : 0.6050
+
+W_L Neuron-Logit
+  Top-10 SV Energie: 95.9%
+  Fourier erklärt  : 95.4%
+
+Ablation
+  Baseline         : 100.00%
+  Nur Key-Freq.    : 82.76%
+  Keys entfernt    : 1.70%
+  Ohne k=3          : 40.32%
+  Ohne k=7          : 38.55%
+  Ohne k=36          : 31.79%
+  Ohne k=44          : 79.82%
+  Ohne k=45          : 71.27%
+
+Referenz: Nanda et al. (2023), ICLR
+  'Progress measures for grokking via mechanistic interpretability'
