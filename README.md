@@ -16,13 +16,13 @@ Four lines of evidence that the trained model uses the Fourier multiplication al
 
 The embedding matrix `W_E ∈ ℝ^{97 × 128}` is sparse in the Fourier basis. Five key frequencies dominate: **k = {3, 7, 36, 44, 45}**. The top-10 Fourier components account for the majority of total norm (Gini coefficient = 0.605).
 
-![Embedding Spectrum](outputs/fourier_01_embedding_spectrum.png)
+<img width="2083" height="742" alt="fourier_01_embedding_spectrum" src="https://github.com/user-attachments/assets/4affbbfc-5f59-487f-b97d-25a7b1311df4" />
 
 #### 2. Grid Structure in W_E · W_Lᵀ
 
 The 2D FFT of the linear prediction matrix `W_E · W_Lᵀ` shows a clear grid pattern — bright lines at exactly the key frequencies in both row and column dimensions. This is the signature of the algorithm's structure: predictions take the form `cos(k·a) · cos(k·c)`, encoding modular addition as rotation.
 
-![Heatmap](outputs/fourier_02_we_wl_heatmap.png)
+<img width="2040" height="887" alt="fourier_02_we_wl_heatmap" src="https://github.com/user-attachments/assets/ee6d1b35-fb67-4785-9398-aa230f2f6eac" />
 
 #### 3. Ablation in Fourier Space
 
@@ -41,13 +41,13 @@ Removing key frequencies from `W_E` collapses performance to chance level. Retai
 
 Removing all key frequencies reduces accuracy to 1.7% — consistent with random guessing over 97 classes (chance = 1/97 ≈ 1.03%). `k=36` is the single most critical frequency.
 
-![Ablation](outputs/fourier_03_ablation.png)
+<img width="2085" height="740" alt="fourier_03_ablation" src="https://github.com/user-attachments/assets/18087642-53f0-4511-9aae-098050e1ab74" />
 
 #### 4. Low Effective Rank of W_L
 
 The neuron-logit matrix `W_L ∈ ℝ^{97 × 128}` has effective rank ~10. The top-10 singular values capture **95.9% of total energy** — consistent with Nanda's prediction of 5 key frequencies × {cos, sin} = 10 dominant directions. Projecting `W_L` onto the 10-dimensional Fourier basis of the key frequencies explains **95.4% of variance**.
 
-![Neuron-Logit](outputs/fourier_04_neuron_logit.png)
+<img width="2085" height="742" alt="fourier_04_neuron_logit" src="https://github.com/user-attachments/assets/2c928d4c-5e0f-4a6c-8c97-ad20f60e4c5c" />
 
 ---
 
@@ -66,15 +66,15 @@ Transformers were trained on `p ∈ {41, 59, 71, 83, 97, 113}` with 5 seeds each
 
 #### Key Frequencies per Modulus
 
-![Multi-modulus frequencies](outputs/multimod_01_frequencies.png)
+<img width="2234" height="3642" alt="multimod_01_frequencies" src="https://github.com/user-attachments/assets/48a69514-7af5-45d7-983b-4286bf269565" />
 
 #### k/p Ratios — Are They Structurally Bound?
 
-![Ratios](outputs/multimod_02_ratios.png)
+<img width="2231" height="889" alt="multimod_02_ratios" src="https://github.com/user-attachments/assets/18e20dfe-1bcb-4c4b-a84b-66519d258ed1" />
 
 #### Fourier Power Heatmap Across Moduli
 
-![Heatmap](outputs/multimod_03_heatmap.png)
+<img width="1900" height="742" alt="multimod_03_heatmap" src="https://github.com/user-attachments/assets/80848891-7f2b-41eb-a18d-055eb9d5e54c" />
 
 #### Finding
 
